@@ -1,0 +1,29 @@
+---
+title: JS Selection
+description: JS Selection
+disableTableOfContents: true
+---
+
+Можете написать свой Javascript код который выполниться при переходе по ссылке. При этом будет создана пустая страница 
+
+## Использование
+
+Пример использования в HTML для использования на сайте
+
+```html
+    <a href="http://tracker.com/group">Ссылка</a>
+```
+
+## Примеры Javascript кода
+
+Редирект без задержки
+
+```js
+    window.location.href='http://example.com';
+```
+
+Редирект с задержкой в 1 секунду
+
+```js
+setTimeout("window.location.href='http://example.com'", 1000);
+```
