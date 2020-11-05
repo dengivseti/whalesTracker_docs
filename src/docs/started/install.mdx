@@ -2,3 +2,145 @@
 title: Установка
 description: Установка трекера на сервер.
 ---
+
+Есть несколько способов устаноки данного трекера.
+ - For noob
+ - Easy
+ - For the paranoid
+
+> ***Минимальная конфигурация*** <br/> 
+> OS Ubuntu 18.04 <br/> 
+> Процессор 1 x 2.8 ГГц <br/> 
+> Оперативная память 2 ГБ <br/>
+> Жесткий диск 10 ГБ <br/> <br/>
+> P.S. Запомните, чем больше процессоров и оперативной памяти, тем большую нагрузку сможет взять на себя сервер. Для увеличения производительности бэкенд использует модуль Cluster, т.е. запускает несколько копий бэкенда равное числу ядер процессора.
+
+## For noob
+
+Покупаете VPS c установленным Docker на борту. Рекомендую сервер на Timeweb c Ubuntu 18.04 и предустановленным Docker. 
+![Docker Sever](/docker1.png)
+![Docker Sever](/docker2.png)
+
+После покупки открывайте терминал и выполните следующие команды
+
+1. Обновите все зависимости
+```sh
+    sudo apt update
+```
+
+2. Создайте папку с трекером и перейдите в нее
+
+```sh
+sudo mkdir tds
+cd tds
+```
+
+3. Скачиваем архив с docker-compose.yml и nginx.conf в папку трекера
+
+```sh
+wget https://github.com/dengivseti/WhalesTracker/releases/download/v0.1/v0.1.zip
+```
+
+4. Необходимо разархивируем архив. Для этого скачаем и установим программу unzip
+
+```sh
+sudo apt-get install unzip
+unzip v0.1.zip
+```
+
+5. При помощи команды ls проверьте что в папке tds находятся 2 файла docker-compose.yml и nginx.conf.prod
+
+6. Также проверьте, что у вас установлен docker и docker-compose
+
+```sh
+docker --version
+docker-compose --version
+```
+
+Вы должны будете получить такой ответ. Версии могут отличаться
+
+```
+Docker version 19.03.13, build 4484c46d9d
+docker-compose version 1.27.4, build 40524192
+```
+
+7. Запускаем наш трекер
+
+```sh
+docker-compose up -d
+```
+
+Вы можете еще сильнее упросить себе установку. Скачав на компьютер архив. Разархивировать его и залить на сервер в папку tds 2 файла по ftp docker-compose.yml и nginx.conf.prod. 
+Вся установка в данном случае будет сводиться к запуску одной команды ***docker-compose up -d***
+
+8. Доступ в админку
+
+Вход доступен по привязанному домену или ip адресу сервера
+
+```
+http://ВАШДОМЕН/admin
+```
+
+> **Внимание** <br />
+> При первом входе в админку Вы должны указать ***ЖЕЛАЕМЫЙ*** логин и пароль. Сохраните их. Сброса и изменение пароля не существует, на текущий момент
+
+## Easy
+
+Если вы устанавливаете трекер на чистый Ubuntu 18.04, то Вам придется установить Docker и Docker Compose самостоятельно
+Советую прочитать следующие статьи. По установке [Docker](https://www.digitalocean.com/community/tutorials/docker-ubuntu-18-04-1-ru) и [Docker Compose](https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-18-04-ru)
+
+Необходимые команды из статьи
+
+Docker 
+
+```
+sudo apt update
+
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+
+sudo apt update
+
+apt-cache policy docker-ce
+
+sudo apt install docker-ce
+
+sudo systemctl status docker
+
+```
+
+Docker Compose
+
+```
+sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+
+```
+
+Все дальнейшие команды аналогичны командам [For noob](#for-noob)
+
+## For the paranoid
+
+Для параноиков необходимо сделать следующие действия:
+
+1. Установить все обновления системы
+2. Скачать Git
+3. Скачать проект по [Ссылке](https://github.com/dengivseti/WhalesTracker)
+4. Распаковать архив
+5. Установить Nodejs
+6. Установить Docker и Docker Compose
+7. Развернуть проект
+    - Для Development
+        ```sh
+            docker-compose -f docker-compose.yml -f docker-compose.development.yml up --build
+        ```
+    - Для Production
+        ```sh
+            docker-compose  up -d
+        ```
+
+Если Вы пошли по параноидальному пути, то не пишите и не жалуйтесь, что Ваш проект не сбилдился или не запустился. Я сбилженные и работающие образы залил на docker hub.
