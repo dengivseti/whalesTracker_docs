@@ -1,10 +1,10 @@
 module.exports = {
   siteMetadata: {
-    siteTitle: 'While`s tracker Docs',
-    defaultTitle: 'While`s tracker Docs',
-    siteTitleShort: 'While`s tracker Docs',
+    siteTitle: 'Whale`s tracker Docs',
+    defaultTitle: 'Whale`s tracker Docs',
+    siteTitleShort: 'Whale`s tracker Docs',
     siteDescription: 'Documentation for Whale`s tracker',
-    siteUrl: `https://whiletracker.netlify.app/`,
+    siteUrl: `https://whalestracker.netlify.app/`,
     siteAuthor: `@dengivseti`,
     siteImage: ``,
     siteLanguage: `en`,
@@ -17,15 +17,15 @@ module.exports = {
       options: {
         configPath: `src/config`,
         docsPath: `src/docs`,
-        githubUrl: `https://github.com/dengivseti/while_tracker_docs`,
+        githubUrl: `https://github.com/dengivseti/whalesTracker_docs`,
         baseDir: ``,
       },
     },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'While`s tracker',
-        short_name: 'While`s tds',
+        name: 'Whale`s tracker',
+        short_name: 'Whale`s tds',
         start_url: `/`,
         background_color: `#ffffff`,
         display: `standalone`,
@@ -43,7 +43,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://whiletracker.netlify.app/`,
+        siteUrl: `https://whalestracker.netlify.app/`,
       },
     },
     `gatsby-plugin-offline`,
