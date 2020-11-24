@@ -1,1 +1,1 @@
-## Documentation from while`s tracker
+## Documentation from whale`s tracker
