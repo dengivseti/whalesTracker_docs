@@ -6,6 +6,8 @@
       link: '/started/logic'
     - label: 'Установка'
       link: '/started/install'
+    - label: 'Обновление'
+      link: '/started/update'
     - label: 'Авторизация'
       link: '/started/auth'
     - label: 'Дашбоард'
